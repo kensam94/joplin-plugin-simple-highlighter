@@ -3,11 +3,11 @@
 	"id": "kensam.joplin.plugin.highlighter",
 	"app_min_version": "1.0",
 	"version": "1.0.0",
-	"name": "Highlighter",
-	"description": "Highlight the selected text by wrapping HTML style",
+	"name": "Simple Highlighter",
+	"description": "Highlight/dehighlight the selected text",
 	"author": "Ken Sam",
-	"homepage_url": "",
-	"repository_url": "",
-	"keywords": [],
+	"homepage_url": "https://github.com/kensam94/joplin-plugin-simple-highlighter",
+	"repository_url": "https://github.com/kensam94/joplin-plugin-simple-highlighter",
+	"keywords": ["highlight"],
 	"categories": []
 }
