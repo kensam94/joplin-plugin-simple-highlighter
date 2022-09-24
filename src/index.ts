@@ -1,5 +1,5 @@
 import joplin from 'api';
-import { ContentScriptType, MenuItemLocation, ToolbarButtonLocation } from 'api/types';
+import { ContentScriptType, ToolbarButtonLocation } from 'api/types';
 
 joplin.plugins.register({
 	onStart: async function() {
@@ -15,6 +15,5 @@ joplin.plugins.register({
 		});
 
 		joplin.views.toolbarButtons.create("highlight", "highlight", ToolbarButtonLocation.EditorToolbar);
-		// joplin.views.menuItems.create("Highlight Context", "highlight", MenuItemLocation.EditorContextMenu);
 	},
 });

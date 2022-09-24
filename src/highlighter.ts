@@ -1,21 +1,31 @@
 import { Editor } from "codemirror";
+import CodeMirror = require("codemirror");
 
 module.exports = {
 	default: function(_context: any) {
 
-        const htmlWrapper = `<span style="background:colorCode;">text</span>`
+        function movePosition (position: CodeMirror.Position, offset: number) : CodeMirror.Position {
+            return {line: position.line, ch: position.ch + offset};
+        }
 
 		const plugin = function(CodeMirror) {
-
-			/**
-			 * Joplin command to format the table
-			 */
 			CodeMirror.defineExtension('highlight', function() {
 				const cm: Editor = this;
+                const cursorFrom = cm.getCursor("from");
+                const cursorTo = cm.getCursor("to");
                 
                 var selectedText = cm.getSelection();
-                var replaceText = htmlWrapper.replace("colorCode", "#ff8b8b").replace("text", selectedText);
-                cm.replaceSelection(replaceText);
+                var surroundText = cm.getRange(movePosition(cursorFrom, -2), movePosition(cursorTo, 2))
+                if (selectedText.startsWith("==") && selectedText.endsWith("==")) {
+                    cm.replaceRange(selectedText.substring(2, selectedText.length - 2), cursorFrom, cursorTo);
+                } else if (surroundText.startsWith("==") && surroundText.endsWith("==")) {
+                    cm.replaceRange(selectedText, movePosition(cursorFrom, -2), movePosition(cursorTo, 2));
+                } else {
+                    var headOffset = /^(\s*)/.exec(selectedText)[1].length;
+                    var tailOffset = /(\s*)$/.exec(selectedText)[1].length;
+                    cm.replaceRange("==" + selectedText.trim() + "==", movePosition(cursorFrom, headOffset), movePosition(cursorTo, -tailOffset));
+                }
+                cm.focus();
                 cm.refresh();
             });
 		}
