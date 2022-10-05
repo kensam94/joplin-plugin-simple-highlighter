@@ -15,3 +15,8 @@ Simple highlighter to highlight the selected text by wrapping == around the sele
     }
 ```
 - Please select all highlighted text to dehighlight properly. Selecting the == is optional. Refer to the GIF above
+
+# Discuss the plugin with other Joplin users
+You can discuss this plugin on the Joplin forum [Simple Highlighter plugin thread](https://discourse.joplinapp.org/t/plugin-simple-highlighter/27522).
+
+
