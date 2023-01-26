@@ -1,5 +1,5 @@
 import joplin from 'api';
-import { ContentScriptType, ToolbarButtonLocation } from 'api/types';
+import { MenuItemLocation, ContentScriptType, ToolbarButtonLocation } from 'api/types';
 
 joplin.plugins.register({
 	onStart: async function() {
@@ -14,8 +14,8 @@ joplin.plugins.register({
 			}
 		});
 
-		joplin.views.toolbarButtons.create("highlight", "highlight", ToolbarButtonLocation.EditorToolbar);
+		joplin.views.toolbarButtons.create("highlightToolbar", "highlight", ToolbarButtonLocation.EditorToolbar);
 		// Add a menu entry, allowing the ability to assign a keyboard shortcut
-		joplin.views.menuItems.create('highlight', 'highlight', MenuItemLocation.Edit, { accelerator: 'CmdOrCtrl+H' });
+		joplin.views.menuItems.create('highlightMenu', 'highlight', MenuItemLocation.Edit, { accelerator: 'CmdOrCtrl+H' });
 	},
 });
