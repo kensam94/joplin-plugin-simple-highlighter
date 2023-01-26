@@ -15,5 +15,7 @@ joplin.plugins.register({
 		});
 
 		joplin.views.toolbarButtons.create("highlight", "highlight", ToolbarButtonLocation.EditorToolbar);
+		// Add a menu entry, allowing the ability to assign a keyboard shortcut
+		joplin.views.menuItems.create('highlight', 'highlight', MenuItemLocation.Edit, { accelerator: 'CmdOrCtrl+H' });
 	},
 });
